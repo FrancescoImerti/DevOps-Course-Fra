@@ -25,17 +25,18 @@
       <h2>Items</h2>
       <ul class="list-group mb-4">
         {% for item in items%}
-          <li>{{item.id}} {{item.title}}  <b>{{item.status}}</b></li>
-        {% endfor %}
+        <li>
+          <form action="/update-item" method="post">
+            {{item.name}}  <b>{{item.status}}</b>
+            <input type="text" id="id_to_edit" name="id_to_edit" value="{{item.id}}" hidden>
+            <input type="submit" value="Mark as Done">
+          </form>
+        </li>
+      {% endfor %}
       </ul>
       <form action="/add-item" method="post">
         <label for="field_name">Add Item:</label>
         <input type="text" id="field_name" name="field_name">
-        <input type="submit" value="Submit">
-      </form>
-      <form action="/update-item" method="post">
-        <label for="id_to_edit">Mark as complete (Item ID):</label>
-        <input type="text" id="id_to_edit" name="id_to_edit">
         <input type="submit" value="Submit">
       </form>
       <form action="/remove-item" method="post">
