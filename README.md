@@ -52,3 +52,18 @@ You should see output similar to the following:
  * Debugger PIN: 226-556-590
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
+
+## Running unit and integration tests
+
+To run the tests make sure pytest>=7.4.2  is installed 
+
+You can run all the tests from your project folder in the terminal:
+'''bash
+poetry run pytest -s
+'''
+
+To run a specific test script :
+'''bash
+petry run pytest -s path/to/test/test.py
+'''
+
