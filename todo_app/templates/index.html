@@ -23,25 +23,41 @@
   <div class="row">
     <div class="col-md-12">
       <h2>Items</h2>
+      <h4>To do</h4>
       <ul class="list-group mb-4">
-        {% for item in items%}
+        {% for item in view_model.to_do_items %}
         <li>
           <form action="/update-item" method="post">
-            {{item.name}}  <b>{{item.status}}</b>
+            {{item.name}}  
             <input type="text" id="id_to_edit" name="id_to_edit" value="{{item.id}}" hidden>
             <input type="submit" value="Mark as Done">
           </form>
         </li>
       {% endfor %}
       </ul>
+      <h4>Doing</h4>
+      <ul class="list-group mb-4">
+        {% for item in view_model.doing_items %}
+        <li>
+          <form action="/update-item" method="post">
+            {{item.name}}  
+            <input type="text" id="id_to_edit" name="id_to_edit" value="{{item.id}}" hidden>
+            <input type="submit" value="Mark as Done">
+          </form>
+        </li>
+      {% endfor %}
+      </ul>
+      <h4>Done</h4>
+      <ul class="list-group mb-4">
+        {% for item in view_model.done_items %}
+        <li>
+            {{item.name}}  
+        </li>
+      {% endfor %}
+      </ul>
       <form action="/add-item" method="post">
         <label for="field_name">Add Item:</label>
         <input type="text" id="field_name" name="field_name">
-        <input type="submit" value="Submit">
-      </form>
-      <form action="/remove-item" method="post">
-        <label for="id_to_remove">Remove Item (Item ID):</label>
-        <input type="text" id="id_to_remove" name="id_to_remove">
         <input type="submit" value="Submit">
       </form>
     </div>
